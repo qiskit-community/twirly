@@ -16,7 +16,14 @@ This package can be installed from the downloaded repository using pip as
 
 ```bash
 cd twirly
-pip install .
+pip install -r requirements.txt
+```
+
+To install the dependencies required by developers, use the following commands:
+
+```bash
+cd twirly
+pip install -r requirements.txt -r requirements-dev.txt
 ```
 
 ## Contribution Guidelines
