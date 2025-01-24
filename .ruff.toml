@@ -83,7 +83,4 @@ lint.ignore = [
   "E713",  # not-in-test
   "W291",  # trailing-whitespace
   "W293",  # blank-line-with-whitespace
-  "E501",  # line-too-long
-  "E711",  # none-comparison
 ]
-

@@ -1,108 +1,109 @@
 #!/usr/bin/env python3
-# (C) Copyright IBM 2020
+# This code is part of Twirly.
 #
-# This code is licensed under the Apache License, Version 2.0. You may
-# obtain a copy of this license in the LICENSE.txt file in the root directory
-# of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.
+# This is proprietary IBM software for internal use only, do not distribute outside of IBM
+# Unauthorized copying of this file is strictly prohibited.
 #
-# Any modifications or derivative works of this code must retain this
-# copyright notice, and modified files need to carry a notice indicating
-# that they have been altered from the originals.
+# (C) Copyright IBM 2025.
 
-# pylint: disable=too-many-return-statements
-
-"""Utility script to verify qiskit copyright file headers"""
+"""Utility script to verify copyright file headers."""
 
 import argparse
-import multiprocessing
-import os
 import re
 import sys
+from concurrent.futures import ProcessPoolExecutor
+from pathlib import Path
+from typing import Iterable
 
 # regex for character encoding from PEP 263
 pep263 = re.compile(r"^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)")
-line_start = copyright_line = re.compile(r"^(\/\/|#) \(C\) Copyright IBM 20")
+allow_path = re.compile(r"^[-_a-zA-Z0-9]+")
 
-
-def discover_files(code_paths):
-    """Find all .py, .pyx, .pxd files in a list of trees"""
-    out_paths = []
-    for path in code_paths:
-        if os.path.isfile(path):
-            out_paths.append(path)
-        else:
-            for directory in os.walk(path):
-                dir_path = directory[0]
-                for subfile in directory[2]:
-                    if subfile.endswith(".py"):
-                        out_paths.append(os.path.join(dir_path, subfile))
-    return out_paths
-
-
-def validate_header(file_path):
-    """Validate the header for a single file"""
-    apache_text = """#
-# This code is licensed under the Apache License, Version 2.0. You may
-# obtain a copy of this license in the LICENSE.txt file in the root directory
-# of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.
+HEADER = """# This code is part of Twirly.
 #
-# Any modifications or derivative works of this code must retain this
-# copyright notice, and modified files need to carry a notice indicating
-# that they have been altered from the originals.
-"""
-    count = 0
+# This is proprietary IBM software for internal use only, do not distribute outside of IBM
+# Unauthorized copying of this file is strictly prohibited.
+#"""
+
+
+def discover_files(
+    roots: Iterable[str],
+    extensions: set[str] = frozenset({".py", ".pyx", ".pxd"}),
+    omit: str = "",
+) -> Iterable[str]:
+    """Find all .py, .pyx, .pxd files in a list of trees."""
+    for code_path in roots:
+        path = Path(code_path)
+        if path.is_dir():
+            # Recursively search for files with the specified extensions
+            for file in path.rglob("*"):
+                if file.suffix in extensions and not file.match(omit):
+                    yield str(file)
+
+
+def validate_header(file_path: str) -> tuple[str, bool, str]:
+    """Validate the header for a single file."""
     with open(file_path, encoding="utf8") as fd:
         lines = fd.readlines()
     start = 0
     for index, line in enumerate(lines):
-        count += 1
-        if count > 5:
+        if index > 5:
             return file_path, False, "Header not found in first 5 lines"
-        if count <= 2 and pep263.match(line):
+        if index <= 2 and pep263.match(line):
             return (
                 file_path,
                 False,
                 "Unnecessary encoding specification (PEP 263, 3120)",
             )
-        if line_start.search(line):
+        if line.strip().startswith(HEADER.split("\n", maxsplit=1)[0]):
             start = index
             break
 
-    if not copyright_line.search(lines[start]):
+    for idx, (actual, required) in enumerate(zip(lines[start:], HEADER.split("\n"))):
+        if (actual := actual.strip()) != (required := required.strip()):
+            return (
+                file_path,
+                False,
+                f"Header line {1 + start + idx} '{actual}' does not match '{required}'.",
+            )
+    if not lines[start + 5].startswith("# (C) Copyright IBM 20"):
         return (file_path, False, "Header copyright line not found")
-    if "".join(lines[start + 1 : start + 9]) != apache_text:
-        return (
-            file_path,
-            False,
-            f"Header apache text string doesn't match:\n {apache_text}",
-        )
-    return (file_path, True, None)
+    return file_path, True, None
 
 
-def _main():
-    default_path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "qiskit"
-    )
+def main():
+    default_path = Path(__file__).resolve().parent.parent / "project_name"
+
     parser = argparse.ArgumentParser(description="Check file headers.")
     parser.add_argument(
         "paths",
-        type=str,
+        type=Path,
         nargs="*",
         default=[default_path],
-        help="Paths to scan by default uses ../qiskit from the script",
+        help="Paths to scan; defaults to '../project_name' relative to the script location.",
+    )
+    parser.add_argument(
+        "-o",
+        "--omit",
+        type=str,
+        default="",
+        help="Glob of files to omit.",
     )
     args = parser.parse_args()
-    files = discover_files(args.paths)
-    with multiprocessing.Pool() as pool:
-        res = pool.map(validate_header, files)
-    failed_files = [x for x in res if x[1] is False]
-    if len(failed_files) > 0:
-        for failed_file in failed_files:
-            sys.stderr.write(f"{failed_file[0]} failed header check because:\n")
-            sys.stderr.write(f"{failed_file[2]}\n\n")
+
+    python_files = discover_files(map(str, args.paths), omit=args.omit)
+    with ProcessPoolExecutor() as executor:
+        results = executor.map(validate_header, python_files)
+
+    failed_files = [(file_path, err) for file_path, success, err in results if not success]
+    if failed_files:
+        for file_path, error_message in failed_files:
+            sys.stderr.write(f"{file_path} failed header check because:\n")
+            sys.stderr.write(f"{error_message}\n\n")
         sys.exit(1)
+
     sys.exit(0)
 
 
 if __name__ == "__main__":
-    _main()
+    main()

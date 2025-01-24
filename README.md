@@ -21,7 +21,7 @@ pip install .
 
 ## Contribution Guidelines
 
-New contributions to the `main` branch will be made through the standard Pull Request  and review procedure. 
+New contributions to the `main` branch will be made through the standard Pull Request  and review procedure.
 
 ## License
 

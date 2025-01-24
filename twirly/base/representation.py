@@ -1,3 +1,8 @@
+# This code is part of Twirly.
+#
+# This is proprietary IBM software for internal use only, do not distribute outside of IBM
+# Unauthorized copying of this file is strictly prohibited.
+#
 # (C) Copyright IBM 2025.
 #
 # This code is licensed under the Apache License, Version 2.0. You may
@@ -20,8 +25,6 @@ import numpy as np
 from qiskit.circuit import (
     CircuitInstruction,
     ParameterExpression,
-    QuantumCircuit,
-    QuantumRegister,
     Qubit,
 )
 
