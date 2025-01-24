@@ -13,6 +13,7 @@ Test utils.py
 """
 
 import numpy as np
+
 import twirly.utils as tu
 
 from . import TwirlyTestCase

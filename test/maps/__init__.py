@@ -13,8 +13,8 @@ Test group map implementations
 """
 
 from typing import Iterable
-
 from unittest import SkipTest
+
 import twirly as tw
 
 
@@ -54,7 +54,10 @@ class HomomorphismTestCase(GroupMapTestCase):
             domain_dot = group_map.domain.dot(domain_lhs, domain_rhs)
             domain_inv = group_map.domain.inv(domain_lhs)
 
-            codomain_lhs, codomain_rhs = group_map.apply(domain_lhs), group_map.apply(domain_rhs)
+            codomain_lhs, codomain_rhs = (
+                group_map.apply(domain_lhs),
+                group_map.apply(domain_rhs),
+            )
             codomain_dot = group_map.codomain.dot(codomain_lhs, codomain_rhs)
             codomain_inv = group_map.codomain.inv(codomain_lhs)
 

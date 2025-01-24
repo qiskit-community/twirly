@@ -13,6 +13,7 @@ Test maps/pauli.py
 """
 
 import twirly as tw
+
 from .. import TwirlyTestCase
 from . import GroupMapTestCase, TensoredInjectionTestCase
 

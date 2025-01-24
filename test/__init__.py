@@ -12,8 +12,8 @@
 Twirly unit tests
 """
 
-import os
 import logging
+import os
 from unittest import TestCase
 from unittest.util import safe_repr
 

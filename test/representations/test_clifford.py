@@ -12,10 +12,10 @@
 Test representations/clifford.py
 """
 
+import twirly as tw
+
 from .. import TwirlyTestCase
 from . import TemplateRepresentationTestCase
-
-import twirly as tw
 
 
 class TestClifford1QZXZXZ(TwirlyTestCase, TemplateRepresentationTestCase):

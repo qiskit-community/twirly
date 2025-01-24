@@ -13,8 +13,8 @@ Sphinx documentation builder
 """
 
 import os
-import sys
 import subprocess
+import sys
 
 # -- Project information -----------------------------------------------------
 project = "Twirly"

@@ -13,6 +13,7 @@ Test maps/clifford_2q.py
 """
 
 import twirly as tw
+
 from .. import TwirlyTestCase
 from . import GroupMapTestCase
 

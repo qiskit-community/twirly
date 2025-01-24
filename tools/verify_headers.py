@@ -16,8 +16,8 @@
 import argparse
 import multiprocessing
 import os
-import sys
 import re
+import sys
 
 # regex for character encoding from PEP 263
 pep263 = re.compile(r"^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)")
@@ -59,7 +59,11 @@ def validate_header(file_path):
         if count > 5:
             return file_path, False, "Header not found in first 5 lines"
         if count <= 2 and pep263.match(line):
-            return file_path, False, "Unnecessary encoding specification (PEP 263, 3120)"
+            return (
+                file_path,
+                False,
+                "Unnecessary encoding specification (PEP 263, 3120)",
+            )
         if line_start.search(line):
             start = index
             break
@@ -67,7 +71,11 @@ def validate_header(file_path):
     if not copyright_line.search(lines[start]):
         return (file_path, False, "Header copyright line not found")
     if "".join(lines[start + 1 : start + 9]) != apache_text:
-        return (file_path, False, f"Header apache text string doesn't match:\n {apache_text}")
+        return (
+            file_path,
+            False,
+            f"Header apache text string doesn't match:\n {apache_text}",
+        )
     return (file_path, True, None)
 
 

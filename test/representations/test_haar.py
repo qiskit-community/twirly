@@ -12,10 +12,10 @@
 Test representations/haar.py
 """
 
+import twirly as tw
+
 from .. import TwirlyTestCase
 from . import TemplateRepresentationTestCase
-
-import twirly as tw
 
 
 class TestUnitary1QZXZXZ(TwirlyTestCase, TemplateRepresentationTestCase):

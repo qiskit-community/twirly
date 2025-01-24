@@ -12,12 +12,13 @@
 Test base/twirling_state.py
 """
 
-from .. import TwirlyTestCase
-
 import numpy as np
 from qiskit.circuit import QuantumCircuit, Qubit
-from twirly.base import IndexedMemberArray, Subsystems
+
 import twirly as tw
+from twirly.base import IndexedMemberArray, Subsystems
+
+from .. import TwirlyTestCase
 
 
 class SubsystemsTestCase(TwirlyTestCase):
@@ -56,7 +57,11 @@ class SubsystemsTestCase(TwirlyTestCase):
             self.assertEqual(elem, tuple(qubits[idx]))
 
     def test_get_item(self):
-        qubits = q0, q1, q2 = [(Qubit(), Qubit()), (Qubit(), Qubit()), (Qubit(), Qubit())]
+        qubits = q0, q1, q2 = [
+            (Qubit(), Qubit()),
+            (Qubit(), Qubit()),
+            (Qubit(), Qubit()),
+        ]
         self.assertEqual(Subsystems(qubits)[2], q2)
         self.assertEqual(Subsystems(qubits)[1:], (q1, q2))
         self.assertEqual(Subsystems(qubits)[0, 2], (q0, q2))
@@ -188,12 +193,14 @@ class IndexedMemberArrayTestCase(TwirlyTestCase):
 
         new_qubits = [[Qubit()], [Qubit()], [Qubit()], [Qubit()]]
         self.assertIMAEqual(
-            ima.replace(qubits=new_qubits), IndexedMemberArray(new_qubits, haar, members)
+            ima.replace(qubits=new_qubits),
+            IndexedMemberArray(new_qubits, haar, members),
         )
 
         new_members = haar.sample((4, 2))
         self.assertIMAEqual(
-            ima.replace(members=new_members), IndexedMemberArray(qubits, haar, new_members)
+            ima.replace(members=new_members),
+            IndexedMemberArray(qubits, haar, new_members),
         )
 
         class HaarSubclass(tw.HaarUnitary):
@@ -201,7 +208,8 @@ class IndexedMemberArrayTestCase(TwirlyTestCase):
 
         new_haar = HaarSubclass(1)
         self.assertIMAEqual(
-            ima.replace(twirling_group=new_haar), IndexedMemberArray(qubits, new_haar, members)
+            ima.replace(twirling_group=new_haar),
+            IndexedMemberArray(qubits, new_haar, members),
         )
 
     def test_split(self):

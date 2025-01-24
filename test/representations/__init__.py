@@ -13,8 +13,9 @@ Test circuit representation implementations
 """
 
 import numpy as np
-from qiskit_aer import AerSimulator
 from qiskit.circuit import Parameter, QuantumCircuit, QuantumRegister
+from qiskit_aer import AerSimulator
+
 import twirly as tw
 
 

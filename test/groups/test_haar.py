@@ -12,11 +12,13 @@
 Test groups/haar.py
 """
 
-from .. import TwirlyTestCase
+from functools import reduce
 
 import numpy as np
-from functools import reduce
+
 import twirly as tw
+
+from .. import TwirlyTestCase
 
 
 def multidim_kron(*arrs):
@@ -90,10 +92,16 @@ class HaarUnitaryTestCase(TwirlyTestCase):
         permuted = h4.permute(members, np.array([[0, 1, 2, 3], [2, 0, 1, 3], [0, 2, 1, 3]]))
         e0 = members[:, 0, None, ...]
         e1 = multidim_kron(
-            c[:, 1, None, ...], a[:, 1, None, ...], b[:, 1, None, ...], d[:, 1, None, ...]
+            c[:, 1, None, ...],
+            a[:, 1, None, ...],
+            b[:, 1, None, ...],
+            d[:, 1, None, ...],
         )
         e2 = multidim_kron(
-            a[:, 2, None, ...], c[:, 2, None, ...], b[:, 2, None, ...], d[:, 2, None, ...]
+            a[:, 2, None, ...],
+            c[:, 2, None, ...],
+            b[:, 2, None, ...],
+            d[:, 2, None, ...],
         )
         self.assertTrue(h4.equal(np.concatenate([e0, e1, e2], axis=1), permuted))
 
