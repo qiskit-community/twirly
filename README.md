@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/github/license/Qiskit/qiskit-dynamics.svg?style=popout-square)](https://opensource.org/licenses/Apache-2.0)
 
-**This repo will not have releases and does not have support or API continuity guarantees.**
+**This is a beta repo and does not have support or API continuity guarantees.**
 
 Once installed it can be imported using
 
