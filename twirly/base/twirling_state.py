@@ -24,7 +24,7 @@ from ..utils import Shape, shape_tuple
 from .twirling_group import MemberArray, TwirlingGroup
 
 _f2 = lambda x: f"{x:.2f}"
-_c2 = lambda x: f"{_f2(np.real(x))}{'+' if np.imag(x) >=0 else '-'}{_f2(np.abs(np.imag(x)))}"
+_c2 = lambda x: f"{_f2(np.real(x))}{'+' if np.imag(x) >= 0 else '-'}{_f2(np.abs(np.imag(x)))}"
 
 
 def _format_array(array, max_width=50):

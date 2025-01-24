@@ -1,0 +1,89 @@
+line-length = 100
+
+lint.select = [
+  "E", # pycodestyle, errors
+  "F", # Pyflakes
+  "I", # isort
+  "W", # pycodestyle, warnings
+]
+
+lint.extend-select = [
+  "D419",  # empty-docstring
+  "PLC0414",  # useless-import-alias
+  "PLC3002",  # unnecessary-direct-lambda-call
+  "PLE0101",  # return-in-init
+  "PLE0116",  # continue-in-finally
+  "PLE0117",  # nonlocal-without-binding
+  "PLE0241",  # duplicate-bases
+  "PLE0604",  # invalid-all-object
+  "PLE0605",  # invalid-all-format
+  "PLE1142",  # await-outside-async
+  "PLE1205",  # logging-too-many-args
+  "PLE1206",  # logging-too-few-args
+  "PLE1307",  # bad-string-format-type
+  "PLE1310",  # bad-str-strip-call
+  "PLE1507",  # invalid-envvar-value
+  "PLE2502",  # bidirectional-unicode
+  "PLE2510",  # invalid-character-backspace
+  "PLE2512",  # invalid-character-sub
+  "PLE2513",  # invalid-character-esc
+  "PLE2514",  # invalid-character-nul
+  "PLE2515",  # invalid-character-zero-width-space
+  "PLR0124",  # comparison-with-itself
+  "UP004",  # useless-object-inheritance
+  "PLR0206",  # property-with-parameters
+  "PLR1711",  # useless-return
+  "C416",  # unnecessary-comprehension
+  "PLW0120",  # useless-else-on-loop
+  "PLW0127",  # self-assigning-variable
+  "PLW0129",  # assert-on-string-literal
+  "B033",  # duplicate-value
+  "PLW0131",  # named-expr-without-context
+  "PLW0406",  # import-self
+  "PLW0602",  # global-variable-not-assigned
+  "PLW0711",  # binary-op-exception
+  "PLW1508",  # invalid-envvar-default
+  "PLW1509",  # subprocess-popen-preexec-fn
+  "PLW3301",  # nested-min-max
+  "PLC0105",  # typevar-name-incorrect-variance
+  "PLC0132",  # typevar-name-mismatch
+  "PLC0205",  # single-string-used-for-slots
+  "PLC0208",  # use-sequence-for-iteration
+  "PLE0100",  # init-is-generator
+  "PLE0118",  # used-prior-global-declaration
+  "PLE0307",  # invalid-str-returned
+  "PLE1300",  # bad-format-character
+  "PLE1700",  # yield-inside-async-function
+  "PLR0133",  # comparison-of-constants
+  "PLR0402",  # consider-using-from-import
+  "SIM101",  # consider-merging-isinstance
+  "PLR1714",  # consider-using-in
+  "PLR1722",  # consider-using-sys-exit
+  "PLW1510",  # subprocess-run-check
+]
+
+lint.ignore = [
+  "PLC0415",  # import-outside-toplevel
+  "PLE0237",  # assigning-non-slot
+  "PLR0904",  # too-many-public-methods
+  "PLR0912",  # too-many-branches
+  "PLR0913",  # too-many-arguments
+  "PLR0914",  # too-many-locals
+  "PLR0915",  # too-many-statements
+  "PLR1702",  # too-many-nested-blocks
+  # Muted rules to prevent code changes:
+  # They can be progressively re-enabled as required.
+  # If few cases need to be disabled, a noqa inline comment can be provided, for example # noqa: F401
+  "F401",  # unused-import
+  "E721",  # type-comparison
+  "E731",  # lambda-assignment
+  "E741",  # ambiguous-variable-name
+  "F821",  # undefined-name
+  "F403",  # undefined-local-with-import-star
+  "E713",  # not-in-test
+  "W291",  # trailing-whitespace
+  "W293",  # blank-line-with-whitespace
+  "E501",  # line-too-long
+  "E711",  # none-comparison
+]
+
