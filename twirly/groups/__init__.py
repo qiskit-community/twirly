@@ -12,14 +12,9 @@
 Twirling group implementations
 """
 
-from .clifford_1q import Clifford1Q
-from .clifford_2q import A5, Clifford2Q, G29D
+from . import clifford, clifford_1q, clifford_2q, haar, pauli
 from .clifford import SmallCliffordGroup, UniformClifford
+from .clifford_1q import Clifford1Q
+from .clifford_2q import A5, G29D, Clifford2Q
 from .haar import HaarUnitary
 from .pauli import UniformPauli
-
-from . import clifford_1q
-from . import clifford_2q
-from . import clifford
-from . import haar
-from . import pauli

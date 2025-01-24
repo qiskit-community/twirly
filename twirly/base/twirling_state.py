@@ -12,16 +12,15 @@
 Subsystems, indexed member arrays, and twirling contexts
 """
 
-from typing import Dict, FrozenSet, Iterable, List, Optional, Tuple, Union
-
 import pprint
 import weakref
-import numpy as np
+from typing import Dict, FrozenSet, Iterable, List, Optional, Tuple, Union
 
+import numpy as np
 from qiskit.circuit import CircuitInstruction, Qubit
 
 from ..exceptions import TwirlingError
-from ..utils import shape_tuple, Shape
+from ..utils import Shape, shape_tuple
 from .twirling_group import MemberArray, TwirlingGroup
 
 _f2 = lambda x: f"{x:.2f}"
@@ -123,7 +122,8 @@ class Subsystems:
         num_subsys = len(qubits) // num_qubits
         qubits = iter(qubits)
         return Subsystems(
-            ((next(qubits) for _ in range(num_qubits)) for _ in range(num_subsys)), num_qubits
+            ((next(qubits) for _ in range(num_qubits)) for _ in range(num_subsys)),
+            num_qubits,
         )
 
     def reshape(self, num_qubits: int) -> "Subsystems":
@@ -142,7 +142,12 @@ class IndexedMemberArray:
 
     __slots__ = ("twirling_group", "qubits", "members", "__weakref__")
 
-    def __init__(self, qubits: SubsystemsLike, twirling_group: TwirlingGroup, members: MemberArray):
+    def __init__(
+        self,
+        qubits: SubsystemsLike,
+        twirling_group: TwirlingGroup,
+        members: MemberArray,
+    ):
         self.qubits = Subsystems(qubits, twirling_group.num_qubits)
         self.twirling_group = twirling_group
         self.members = members

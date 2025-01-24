@@ -131,7 +131,8 @@ class CliffordEmbedding(GroupMap):
         # handle missing positions
         if positions is None:
             positions = np.tile(
-                np.arange(m * inputs_per_output), shape_tuple(input_shape[:-1], output_shape[-1])
+                np.arange(m * inputs_per_output),
+                shape_tuple(input_shape[:-1], output_shape[-1]),
             )[..., : input_shape[-1] * m].reshape(shape_tuple(input_shape, m))
         elif positions.ndim < len(input_shape) + 1:
             positions = positions.reshape(

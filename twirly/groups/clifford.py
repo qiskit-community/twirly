@@ -12,13 +12,12 @@
 Clifford twirling groups
 """
 
-from typing import Callable
-
 import abc
 from functools import partial
 from itertools import product
-import numpy as np
+from typing import Callable
 
+import numpy as np
 from qiskit.quantum_info import Clifford
 from qiskit.quantum_info.random import random_clifford
 
@@ -245,7 +244,8 @@ class SmallCliffordGroup(NdEnumeratedTwirlingGroup):
     @cached_property_by_dim
     def _full_propagate_paulis_table(self):
         all_paulis = np.array(
-            list(map(list, product([0, 1, 2, 3], repeat=self.num_qubits))), dtype=np.uint8
+            list(map(list, product([0, 1, 2, 3], repeat=self.num_qubits))),
+            dtype=np.uint8,
         )
         paulis, phases = self.propagate_paulis(self.all_members, all_paulis)
         indexer = np.array([4**idx for idx in range(self.num_qubits)])[::-1]

@@ -13,7 +13,6 @@ Haar uniform twirling group
 """
 
 import numpy as np
-
 from qiskit.quantum_info import random_unitary
 
 from ..base import TwirlingGroup

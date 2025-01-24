@@ -12,19 +12,27 @@
 Base classes and framework
 """
 
+from . import (
+    circuit_bundle,
+    enumerations,
+    group_map,
+    representation,
+    twirling_group,
+    twirling_state,
+)
 from .circuit_bundle import CircuitBundle, ParameterGenerator
 from .enumerations import (
+    ENUMERATED_DTYPE,
     EnumeratedTwirlingGroup,
     NdEnumeratedTwirlingGroup,
-    ENUMERATED_DTYPE,
 )
 from .group_map import (
     CachedMapMixin,
     Conjugation,
-    Homomorphism,
-    HomomorphismComposition,
     GroupMap,
     GroupMapComposition,
+    Homomorphism,
+    HomomorphismComposition,
     Identity,
     Injection,
     InjectionComposition,
@@ -37,11 +45,4 @@ from .representation import (
     TemplateRepresentation,
 )
 from .twirling_group import TwirlingGroup
-from .twirling_state import Subsystems, IndexedMemberArray, TwirlingState
-
-from . import circuit_bundle
-from . import enumerations
-from . import group_map
-from . import representation
-from . import twirling_group
-from . import twirling_state
+from .twirling_state import IndexedMemberArray, Subsystems, TwirlingState

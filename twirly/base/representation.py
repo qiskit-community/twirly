@@ -12,12 +12,11 @@
 Twirling group circuit representation base classes
 """
 
-from typing import Iterable, Tuple, Union
-
 import abc
 from functools import cached_property
-import numpy as np
+from typing import Iterable, Tuple, Union
 
+import numpy as np
 from qiskit.circuit import (
     CircuitInstruction,
     ParameterExpression,
@@ -28,7 +27,7 @@ from qiskit.circuit import (
 
 from .circuit_bundle import CircuitBundle
 from .enumerations import EnumeratedTwirlingGroup
-from .group_map import Injection, Identity
+from .group_map import Identity, Injection
 from .twirling_group import MemberArray, TwirlingGroup
 from .twirling_state import Subsystems
 

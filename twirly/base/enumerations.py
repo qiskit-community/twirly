@@ -13,10 +13,11 @@ Enumerated twirling group base classes
 """
 
 import abc
+
 import numpy as np
 
-from .twirling_group import TwirlingGroup
 from ..utils import cached_property_by_dim, get_rng, shape_tuple
+from .twirling_group import TwirlingGroup
 
 ENUMERATED_DTYPE = np.int16
 

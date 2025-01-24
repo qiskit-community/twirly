@@ -12,14 +12,13 @@
 Utility functions and classes
 """
 
-from typing import Iterable, Tuple, Union
-
 from _thread import RLock
 from collections.abc import Iterable as IterableBase
 from itertools import product
+from typing import Iterable, Tuple, Union
 
 import numpy as np
-from numpy.random import default_rng, Generator
+from numpy.random import Generator, default_rng
 from numpy.typing import DTypeLike
 
 Shape = Tuple[int, ...]

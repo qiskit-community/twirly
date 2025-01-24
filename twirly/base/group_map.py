@@ -12,11 +12,10 @@
 Group map and homomorphism base classes
 """
 
-from typing import Iterable, Union
-
 import abc
 import inspect
 from functools import cached_property
+from typing import Iterable, Union
 
 from ..exceptions import TwirlingError
 from .enumerations import EnumeratedTwirlingGroup

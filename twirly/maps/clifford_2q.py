@@ -13,12 +13,11 @@ Two-qubit Clifford group maps
 """
 
 import numpy as np
-
 from qiskit.circuit import Operation
 from qiskit.circuit.library import CXGate
 from qiskit.quantum_info import Clifford
 
-from ..base import GroupMap, ENUMERATED_DTYPE
+from ..base import ENUMERATED_DTYPE, GroupMap
 from ..groups import Clifford1Q, Clifford2Q
 from ..utils import cached_property_by_dim
 

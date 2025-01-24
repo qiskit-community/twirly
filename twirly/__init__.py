@@ -12,13 +12,15 @@
 Twirly
 """
 
+from . import base, exceptions, groups, maps, representations, utils
 from .base import CircuitRepresentation, GroupMap, TemplateRepresentation, TwirlingGroup
 from .exceptions import TwirlingError
-from .groups import A5, Clifford1Q, Clifford2Q, G29D, HaarUnitary, UniformClifford, UniformPauli
-
-from . import base
-from . import exceptions
-from . import groups
-from . import maps
-from . import representations
-from . import utils
+from .groups import (
+    A5,
+    G29D,
+    Clifford1Q,
+    Clifford2Q,
+    HaarUnitary,
+    UniformClifford,
+    UniformPauli,
+)

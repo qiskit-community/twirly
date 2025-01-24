@@ -12,9 +12,9 @@
 Circuit bundle
 """
 
+from itertools import count, product
 from typing import Dict, Iterable, List, Sequence
 
-from itertools import count, product
 from qiskit.circuit import CircuitInstruction, Parameter, QuantumCircuit, Qubit
 from qiskit_aer import AerSimulator
 

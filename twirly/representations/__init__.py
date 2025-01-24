@@ -12,7 +12,6 @@
 Circuit representation implementations
 """
 
+from . import clifford
 from .clifford import Clifford1QZXZXZ, Clifford2QCXLikeRepresentation
 from .haar import Unitary1QZXZXZ
-
-from . import clifford

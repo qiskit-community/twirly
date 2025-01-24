@@ -12,16 +12,16 @@
 Group map implementations
 """
 
+from . import clifford, clifford_1q, clifford_2q, pauli
+from .clifford import (
+    CliffordEmbedding,
+    CliffordIntoUnitary,
+    SmallCliffordGroupIntoUniformClifford,
+)
 from .clifford_1q import Clifford1QIntoClifford2Q, Clifford1QIntoHaarUnitary
 from .clifford_2q import Clifford2QToInterleavedCXLike
-from .clifford import CliffordIntoUnitary, CliffordEmbedding, SmallCliffordGroupIntoUniformClifford
 from .pauli import (
     UniformPauliIntoClifford1Q,
     UniformPauliIntoClifford2Q,
     UniformPauliIntoHaarUnitary,
 )
-
-from . import clifford_1q
-from . import clifford_2q
-from . import clifford
-from . import pauli

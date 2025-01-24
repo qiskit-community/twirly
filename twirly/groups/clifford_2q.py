@@ -15,12 +15,11 @@ Clifford twirling group for a two qubits
 from itertools import product
 
 import numpy as np
-
 from qiskit.quantum_info import Clifford
 
 from ..utils import cached_property_by_dim, shape_tuple
-from .clifford_1q import Clifford1Q
 from .clifford import SmallCliffordGroup, UniformClifford
+from .clifford_1q import Clifford1Q
 
 
 def _embed(members, pos):
@@ -157,7 +156,8 @@ class Clifford2Q(SmallCliffordGroup):
         # find out what each of the 20 first coset representatives do to all 16 paulis
         all_cosets = self._all_parent_members[np.arange(20, dtype=self.dtype) * 576]
         all_paulis = np.array(
-            list(map(list, product([0, 1, 2, 3], repeat=self.num_qubits))), dtype=np.uint8
+            list(map(list, product([0, 1, 2, 3], repeat=self.num_qubits))),
+            dtype=np.uint8,
         )
         paulis, phases = self._parent.propagate_paulis(all_cosets, all_paulis)
         return paulis, phases

@@ -14,7 +14,7 @@ Clifford group circuit representations
 
 from typing import Optional
 
-from qiskit.circuit import CircuitInstruction, Barrier, Operation
+from qiskit.circuit import Barrier, CircuitInstruction, Operation
 from qiskit.circuit.library import CXGate, RZGate, SXGate
 
 from ..base import TemplateRepresentation

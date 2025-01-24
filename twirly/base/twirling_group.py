@@ -12,17 +12,15 @@
 Twirling group base class
 """
 
-from typing import Mapping
-
 import abc
 from functools import reduce
+from typing import Mapping
 
 import numpy as np
-
 from qiskit.circuit.operation import Operation
 
 from ..exceptions import TwirlingError
-from ..utils import shape_tuple, Shape
+from ..utils import Shape, shape_tuple
 
 MemberArray = np.ndarray
 
@@ -124,7 +122,9 @@ class TwirlingGroup(abc.ABC):
             return members[tuple(idx if jdx == axis else sl for jdx in range(ndim))]
 
         return reduce(
-            self.dot, map(get_slice, range(shape[axis])), self.id_member((1,) * (ndim - 1))
+            self.dot,
+            map(get_slice, range(shape[axis])),
+            self.id_member((1,) * (ndim - 1)),
         )
 
     def find_orbit(self, member: MemberArray, max_order: int = 1000) -> MemberArray:

@@ -13,7 +13,6 @@ Haar uniform unitary group representations
 """
 
 import numpy as np
-
 from qiskit.circuit import CircuitInstruction
 from qiskit.circuit.library import RZGate, SXGate
 
