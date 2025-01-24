@@ -144,7 +144,9 @@ class Clifford2QToInterleavedCXLike(GroupMap):
         return (output_shape[:-2],)
 
     def _verify(self, member: int, operation: Operation = CXGate()):
-        m = lambda x: Clifford(self.codomain._all_parent_members[x])
+        def m(x):
+            return Clifford(self.codomain._all_parent_members[x])
+
         c = Clifford.from_label("II")
         for a, b in zip(*self.apply(member).T):
             c = Clifford(operation) @ (m(b) ^ m(a)) @ c

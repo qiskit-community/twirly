@@ -17,9 +17,9 @@
 Twirling group implementations
 """
 
-from . import clifford, clifford_1q, clifford_2q, haar, pauli
-from .clifford import SmallCliffordGroup, UniformClifford
-from .clifford_1q import Clifford1Q
-from .clifford_2q import A5, G29D, Clifford2Q
-from .haar import HaarUnitary
-from .pauli import UniformPauli
+from . import clifford, clifford_1q, clifford_2q, haar, pauli  # noqa
+from .clifford import SmallCliffordGroup, UniformClifford  # noqa
+from .clifford_1q import Clifford1Q  # noqa
+from .clifford_2q import A5, G29D, Clifford2Q  # noqa
+from .haar import HaarUnitary  # noqa
+from .pauli import UniformPauli  # noqa

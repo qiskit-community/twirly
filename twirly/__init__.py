@@ -17,15 +17,15 @@
 Twirly
 """
 
-from . import base, exceptions, groups, maps, representations, utils
-from .base import CircuitRepresentation, GroupMap, TemplateRepresentation, TwirlingGroup
-from .exceptions import TwirlingError
+from . import base, exceptions, groups, maps, representations, utils  # noqa
+from .base import CircuitRepresentation, GroupMap, TemplateRepresentation, TwirlingGroup  # noqa
+from .exceptions import TwirlingError  # noqa
 from .groups import (
-    A5,
-    G29D,
-    Clifford1Q,
-    Clifford2Q,
-    HaarUnitary,
-    UniformClifford,
-    UniformPauli,
+    A5,  # noqa
+    G29D,  # noqa
+    Clifford1Q,  # noqa
+    Clifford2Q,  # noqa
+    HaarUnitary,  # noqa
+    UniformClifford,  # noqa
+    UniformPauli,  # noqa
 )

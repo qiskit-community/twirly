@@ -74,13 +74,4 @@ lint.ignore = [
   # Muted rules to prevent code changes:
   # They can be progressively re-enabled as required.
   # If few cases need to be disabled, a noqa inline comment can be provided, for example # noqa: F401
-  "F401",  # unused-import
-  "E721",  # type-comparison
-  "E731",  # lambda-assignment
-  "E741",  # ambiguous-variable-name
-  "F821",  # undefined-name
-  "F403",  # undefined-local-with-import-star
-  "E713",  # not-in-test
-  "W291",  # trailing-whitespace
-  "W293",  # blank-line-with-whitespace
 ]

@@ -17,16 +17,16 @@
 Group map implementations
 """
 
-from . import clifford, clifford_1q, clifford_2q, pauli
+from . import clifford, clifford_1q, clifford_2q, pauli  # noqa
 from .clifford import (
-    CliffordEmbedding,
-    CliffordIntoUnitary,
-    SmallCliffordGroupIntoUniformClifford,
+    CliffordEmbedding,  # noqa
+    CliffordIntoUnitary,  # noqa
+    SmallCliffordGroupIntoUniformClifford,  # noqa
 )
-from .clifford_1q import Clifford1QIntoClifford2Q, Clifford1QIntoHaarUnitary
-from .clifford_2q import Clifford2QToInterleavedCXLike
+from .clifford_1q import Clifford1QIntoClifford2Q, Clifford1QIntoHaarUnitary  # noqa
+from .clifford_2q import Clifford2QToInterleavedCXLike  # noqa
 from .pauli import (
-    UniformPauliIntoClifford1Q,
-    UniformPauliIntoClifford2Q,
-    UniformPauliIntoHaarUnitary,
+    UniformPauliIntoClifford1Q,  # noqa
+    UniformPauliIntoClifford2Q,  # noqa
+    UniformPauliIntoHaarUnitary,  # noqa
 )
