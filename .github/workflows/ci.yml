@@ -15,7 +15,9 @@
 
 name: CI
 on:
-  [ push, pull_request ]
+  push:
+  pull_request:
+    branches: main
 # save resources: cancel redundant workflow runs on the same branch when new commits are pushed
 concurrency:
   group: ci-${{ github.ref }}
