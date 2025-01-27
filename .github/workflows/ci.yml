@@ -19,6 +19,7 @@ on:
 # save resources: cancel redundant workflow runs on the same branch when new commits are pushed
 concurrency:
   group: ${{ github.repository }}-${{ github.ref }}-${{ github.head_ref }}
+  cancel-in-progress: true
 jobs:
   code-quality:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
