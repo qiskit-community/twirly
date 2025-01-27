@@ -1,4 +1,4 @@
-# This code is part of Twwirly.
+# This code is part of Twirly.
 #
 # This is proprietary IBM software for internal use only, do not distribute outside of IBM
 # Unauthorized copying of this file is strictly prohibited.
