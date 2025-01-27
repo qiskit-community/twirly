@@ -15,13 +15,10 @@
 
 name: CI
 on:
-  push:
-  pull_request:
-    branches: main
+  [ push, pull_request ]
 # save resources: cancel redundant workflow runs on the same branch when new commits are pushed
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.repository }}-${{ github.ref }}-${{ github.head_ref }}
 jobs:
   code-quality:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
