@@ -21,11 +21,10 @@ on:
     branches: main
 # save resources: cancel redundant workflow runs on the same branch when new commits are pushed
 concurrency:
-  group: ${{ github.repository }}-${{ github.ref }}-${{ github.head_ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   code-quality:
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
     name: Run code quality checks
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +42,6 @@ jobs:
       - name: pre-commit
         run: tox -e pre-commit
   tests:
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
     # only kick-off test cases when basic code quality checks succeed
     needs: [ "code-quality" ]
     name: Run unit tests - python${{ matrix.python-version }}-${{ matrix.os }}
