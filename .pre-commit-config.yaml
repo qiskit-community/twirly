@@ -10,7 +10,7 @@ repos:
     hooks:
       - id: run-python-script
         name: Verify headers
-        entry: python tools/verify_headers.py --omit project_name/_version.py project_name test tools
+        entry: python tools/verify_headers.py --omit twirly/_version.py twirly test tools
         language: system
         types: [python]
         exclude: ^docs

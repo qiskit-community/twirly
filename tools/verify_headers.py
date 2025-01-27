@@ -72,7 +72,7 @@ def validate_header(file_path: str) -> tuple[str, bool, str]:
 
 
 def main():
-    default_path = Path(__file__).resolve().parent.parent / "project_name"
+    default_path = Path(__file__).resolve().parent.parent
 
     parser = argparse.ArgumentParser(description="Check file headers.")
     parser.add_argument(
@@ -80,7 +80,7 @@ def main():
         type=Path,
         nargs="*",
         default=[default_path],
-        help="Paths to scan; defaults to '../project_name' relative to the script location.",
+        help="Paths to scan; defaults to '../twirly' relative to the script location.",
     )
     parser.add_argument(
         "-o",
