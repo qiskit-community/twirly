@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # This code is part of Twirly.
 #
-# This is proprietary IBM software for internal use only, do not distribute outside of IBM
-# Unauthorized copying of this file is strictly prohibited.
-#
 # (C) Copyright IBM 2025.
+#
+# This code is licensed under the Apache License, Version 2.0. You may
+# obtain a copy of this license in the LICENSE.txt file in the root directory
+# of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.
+#
+# Any modifications or derivative works of this code must retain this
+# copyright notice, and modified files need to carry a notice indicating
+# that they have been altered from the originals.
 
 """Utility script to verify copyright file headers."""
 
@@ -20,9 +25,6 @@ pep263 = re.compile(r"^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)")
 allow_path = re.compile(r"^[-_a-zA-Z0-9]+")
 
 HEADER = """# This code is part of Twirly.
-#
-# This is proprietary IBM software for internal use only, do not distribute outside of IBM
-# Unauthorized copying of this file is strictly prohibited.
 #"""
 
 
@@ -66,7 +68,8 @@ def validate_header(file_path: str) -> tuple[str, bool, str]:
                 False,
                 f"Header line {1 + start + idx} '{actual}' does not match '{required}'.",
             )
-    if not lines[start + 5].startswith("# (C) Copyright IBM 20"):
+
+    if not lines[start + 2].startswith("# (C) Copyright IBM 20"):
         return (file_path, False, "Header copyright line not found")
     return file_path, True, None
 
