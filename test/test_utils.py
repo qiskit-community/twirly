@@ -26,7 +26,6 @@ from . import TwirlyTestCase
 
 class TestUtil(TwirlyTestCase):
     def test_iter_along_axis(self):
-        assert False
         arr = np.random.default_rng().random((2, 3, 4))
 
         # axis 0
