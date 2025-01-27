@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project-name"
+dynamic = ["version"]
+description = "A particle filter implementation in Python and NumPy."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Ian Hincks", email = "ian.hincks@ibm.com" }
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "numpy>=2",
+]
+
+[tool.setuptools_scm]
+version_file = "project_name/_version.py"
+
+[project.urls]
+Homepage = "https://github.ibm.com/ibm-q-research/project-name"
+BugTracker = "https://github.ibm.com/ibm-q-research/project-name/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",                 # For running tests
+    "ruff",                   # Formatter and linter
+    "pre-commit",             # Pre-commit hooks
+    "towncrier",              # Changelog management
+]
+
+[tool.ruff]
+lint.select = ["E", "F", "I"] # pycodestyle, pyflake, isort
+line-length = 100
+target-version = "py311"
+
+[tool.towncrier]
+directory = "changelog.d"
+filename = "CHANGELOG.md"
+template = "towncrier:default"
+version = "attr: project_name.__version__"
