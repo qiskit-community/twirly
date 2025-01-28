@@ -1,8 +1,5 @@
 # This code is part of Twirly.
 #
-# This is proprietary IBM software for internal use only, do not distribute outside of IBM
-# Unauthorized copying of this file is strictly prohibited.
-#
 # (C) Copyright IBM 2025.
 #
 # This code is licensed under the Apache License, Version 2.0. You may
@@ -15,7 +12,10 @@
 
 name: CI
 on:
-  [ push, pull_request ]
+  push:
+    branches: main
+  pull_request:
+    branches: main
 # save resources: cancel redundant workflow runs on the same branch when new commits are pushed
 concurrency:
   group: ci-${{ github.ref }}
